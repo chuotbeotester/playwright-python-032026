@@ -5,13 +5,13 @@
 Bài tập 1: Xác định XPath các element sau: 
     1: Menu Manage Client
     C1: //a [@href="https://hrm.anhtester.com/erp/clients-list" ]  
-    C2: //span[normalize-space()='Manage Clients']
+    C2: //span[normalize-space() ="Manage Clients"]/ancestor::a
     
     2. Button [+Add New]
-    C1: //a[normalize-space()= "+ Add New"]
-    C2: //div[@class ="card user-profile-list"]/div/div/a[2]
+    C1: //div[@class='card user-profile-list']/descendant::a[2]
+    C2: //a[normalize-space() ="Add New"]
     
-    3. Các trường thông tin: 
+    3. Các trường thông tin:
         3.1: Textbox
             - First Name *:
                 + //input[@name='first_name']
@@ -36,9 +36,9 @@ Bài tập 1: Xác định XPath các element sau:
                 + //div[contains(@class,'form-group')]//select[@name='gender']
         3.3: Button [Reset]: 
                 + //button[@type='reset']
-                + //*[normalize-space()='Reset']
+                + //div[@class='card-footer text-right']/child::button[@type='reset']
              Button [Save]: 
-                + //button[@type='submit']
+                + //div[@class='card-footer text-right']/child::button[@type='submit']
                 + //*[normalize-space()='Save']
         3.4: Thẻ <input> trong trường Attachment *: 
             + //input[@type='file']
