@@ -2,7 +2,7 @@
 # Menu Manage Clients (from Home page): //a[@href="https://hrm.anhtester.com/erp/clients-list"]
 # Menu Manage Clients (from Home page): //span[normalize-space() = "Manage Clients"]//parent::a
 
-# Add new button: //a[class="collapsed btn waves-effect waves-light btn-primary btn-sm m-0"]
+# Add new button: //a[@class="collapsed btn waves-effect waves-light btn-primary btn-sm m-0"]
 # Add new button: //a[@class="btn btn-sm waves-effect waves-light btn-primary btn-icon m-0"]/following-sibling::a
 
 # Textbox First Name: //input[@name="first_name"]
@@ -28,6 +28,9 @@
 
 # Button [Reset]: //button[@type="reset"]
 # Button [Reset]: //span[normalize-space()="Save"]/parent::button/preceding-sibling::button
+
+# Button [Save]: //button[normalize-space()= "Save"]
+# Button [Save]: //button[@aria-expanded="true"]//following-sibling::button
 
 # Thẻ <input>  trong trường Attachment: //input[@class="custom-file-input"]
 # Thẻ <input>  trong trường Attachment //label[@class="custom-file-label"]/preceding-sibling::input
