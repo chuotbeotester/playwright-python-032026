@@ -31,7 +31,7 @@
 
 
 #Gender
-//span[@id="select2-gender-qz-container"]
+//span[@class="selection"]
 //select[@name="gender"]/following-sibling::span
 
 
