@@ -1,10 +1,10 @@
 # Menu Manage Clients
-//a[normalize-space(text())='Manage Clients']
+//a[contains(@href,'clients-list')]
 //span[@class='pc-mtext' and normalize-space()='Manage Clients']/parent::a
 
 # Button Add new
-//a[contains(@class,'btn-primary') and contains(text(),'Add New')]
-//div[@class='card-header-right']/descendant::a[contains(text(),'Add New')]
+//a[contains(@class,'btn-primary') and normalize-space(.)='Add New']
+//a[@href='#add_form']/preceding-sibling::a[contains(@href,'clients-grid')]
 
 # First Name
 //input[@placeholder='First Name']
@@ -39,9 +39,9 @@
 //div[@class='card-footer text-right']/descendant::button[@type='reset']
 
 # Save
-//button[@type='submit']
+//span[@class='ladda-spinner']/preceding-sibling::span[normalize-space()='Save']/parent::button
 //button[@type='reset']/following-sibling::button[@type='submit']
 
 # Attechment
-//input[@type='file']
-//input[@type='file']/following-sibling::label[@class='custom-file-label']
+//input[@type='file' and @name='file']
+//div[@class='custom-file']/child::input[@type='file']
