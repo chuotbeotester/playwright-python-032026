@@ -54,7 +54,7 @@ btn_reset_2 = "//button[@type='submit']/preceding-sibling::button[@type='reset']
 
 # 11. Button [Save]
 
-btn_save_1 = "//button[@type='submit']"
+btn_save_1 = "//button[normalize-space()='Save']"
 btn_save_2 = "//button[@type='reset']/following-sibling::button[@type='submit']" 
 
 # 12. Thẻ <input> trong trường Attachment 
