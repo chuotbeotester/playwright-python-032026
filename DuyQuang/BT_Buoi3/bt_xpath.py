@@ -46,3 +46,7 @@
 # button Save
 # //button[normalize-space()='Save']
 # //button[@type='reset']/following-sibling::button
+
+# Attachment
+# //input[@class='custom-file-input']
+# //label[@class='custom-file-label']/preceding-sibling::input
