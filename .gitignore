@@ -19,10 +19,6 @@ test-results/
 playwright-report/
 blob-report/
 playwright/.cache/
-*.webm
-*.zip
-*.png
-*.jpeg
 
 # Environment variables
 .env
