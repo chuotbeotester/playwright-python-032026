@@ -1,5 +1,4 @@
 from playwright.sync_api import Page, expect
-from pathlib import Path
 
 def test_bai_tap_buoi_4(page:Page):
     page.goto("https://hrm.anhtester.com/")
