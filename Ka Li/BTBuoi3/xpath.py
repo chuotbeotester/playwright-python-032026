@@ -3,8 +3,8 @@
 //span[@class='pc-mtext' and normalize-space()='Manage Clients']/parent::a
 
 # Button Add new
-//a[contains(@class,'btn-primary') and normalize-space(.)='Add New']
-//a[@href='#add_form']/preceding-sibling::a[contains(@href,'clients-grid')]
+//a[normalize-space()='Add New']
+//a[contains(@href,'clients-grid')]/following-sibling::a[@href='#add_form']
 
 # First Name
 //input[@placeholder='First Name']
@@ -44,4 +44,4 @@
 
 # Attechment
 //input[@type='file' and @name='file']
-//div[@class='custom-file']/child::input[@type='file']
+//div[contains(@class,'custom-file')]/input[@type='file']
