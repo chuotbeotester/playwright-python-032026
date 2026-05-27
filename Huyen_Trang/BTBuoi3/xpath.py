@@ -31,7 +31,7 @@
 # #//label[contains(normalize-space(), "Username")]/following-sibling::div//input
 
 # Gender
-# #//span[@id="select2-gender-9t-container"]
+# #//span[@class="selection"]
 # #//select[@name="gender"]/following-sibling::span
 
 # Reset button

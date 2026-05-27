@@ -20,7 +20,8 @@ def test_action(page: Page):
     page.get_by_role("textbox", name="Username").fill("Huyentrang")
     page.locator('input[name="contact_number"]').fill("01234567891")
     page.locator('//label[normalize-space()="Gender"]/following-sibling::select').select_option(label="Female")
-    page.get_by_role("button", name="Choose File").set_input_files("BTBuoi4/image.jpg")
+    page.get_by_role("button", name="Choose File").set_input_files("tests/image.jpg")
+    
     
     page.get_by_role("button", name="Save").click()
     time.sleep(5)
