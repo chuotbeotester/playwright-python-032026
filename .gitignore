@@ -19,10 +19,6 @@ test-results/
 playwright-report/
 blob-report/
 playwright/.cache/
-*.webm
-*.zip
-*.png
-*.jpeg
 
 # Environment variables
 .env
@@ -37,3 +33,8 @@ playwright/.cache/
 # OS specific
 .DS_Store
 Thumbs.db
+
+venv/
+__pycache__/
+.pytest_cache/
+*.pyc
