@@ -69,11 +69,17 @@ def test_action(page : Page):
     expect(page.locator("//table[@id='xin_table']/tbody/tr[1]/td[6]")).to_have_text('Active')
     
     #Delete user
-    btn_del = "//table[@id='xin_table']/tbody/tr[1]/td[1]//button[contains(@class, 'delete')]"
-    # btn_confirm = "//button/span[text()='Confirm']"
-    page.locator(btn_del).hover()
-    page.locator(btn_del).click()
-    page.get_by_role("button", name="Confirm").click()
+    del_btn = page.locator("//table[@id='xin_table']/tbody/tr[1]/td[1]//button[contains(@class, 'delete')]")    
+    del_btn.hover()
+    del_btn.click()
+    
+    modal = page.locator("//h5[contains(text(), 'Are you sure you want to delete this record?')]/ancestor::div[@class='modal-content']")
+    confirm_btn = page.locator("//form[@id='delete_record']//button[@type='submit']")
+    
+    expect(modal).to_be_visible()
+    confirm_btn.wait_for()
+    confirm_btn.click()
+    expect(modal).to_be_hidden()
     
     #Verify Client deleted
-    page.locator("//div[@id='toast-container']//div[text()='Client deleted.']").wait_for()
+    expect(page.locator("//div[@id='toast-container']//div[text()='Client deleted.']")).to_be_visible()
