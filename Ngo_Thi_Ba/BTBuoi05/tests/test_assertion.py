@@ -13,35 +13,35 @@ def test_action(page: Page):
     #Click on Add new button 
     page.get_by_role("link", name="Add New").click()
     
-    # First Name field 
+    # Fill first Name 
     page.get_by_role("textbox", name="First Name").fill("Ba")
     
-    # Last name field
+    # Fill last name field
     page.get_by_role("textbox", name="Last Name").fill("Ngo Thi")
     
-    # Password
+    # Fill password
     page.get_by_role("textbox", name="Password").fill("1234567")
     
-    #Contact Number
+    #Fill Contact Number
     page.locator("//input[@name='contact_number']").fill("090807060504")
     
-    # Gender
+    # Select Gender
     page.locator("//select[@name='gender']").select_option("Female")
     
-    #Email
+    #Fill Email
     page.get_by_role("textbox", name="Email").fill("a1@gmail.com")
     
-    #Username
+    #Fill Username
     page.get_by_role("textbox", name="Username").fill("Ba0521260")
     
     #Choose File
-    page.locator("//input[@type='file']").set_input_files("download.jpg")
+    page.locator("//input[@type='file']").set_input_files("Ngo_Thi_Ba/BTBuoi05/tests/download.jpg")
   
     #Click on Save button
     page.get_by_role("button", name="Save").click()
     
     
-   # Search box
+   #Check search box
     expect(page.get_by_role("searchbox", name="Search")).to_be_visible() # type: ignore
     page.get_by_role("searchbox", name="Search").fill("a1@gmail.com")  # type: ignore
    
