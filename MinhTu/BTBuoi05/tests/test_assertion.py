@@ -1,6 +1,13 @@
 from playwright.sync_api import Page, expect
 import time
 
+firstName = 'test'
+lastName = 'test'
+pwd = '123456'
+contactNumber = '0123'
+email = 'test@gmail.com'
+username = 'tupham'
+
 def test_action(page : Page):
     page.goto("https://hrm.anhtester.com/")
     
@@ -20,25 +27,25 @@ def test_action(page : Page):
     page.get_by_role("link", name="Add New").click()
     
     #Input First Name
-    page.get_by_role("textbox", name="First Name").fill('test')
+    page.get_by_role("textbox", name="First Name").fill(firstName)
     
     #Input Last Name
-    page.get_by_role("textbox", name="Last Name").fill('test')
+    page.get_by_role("textbox", name="Last Name").fill(lastName)
     
     #Input Password
-    page.get_by_role("textbox", name="Password").fill('123456')
+    page.get_by_role("textbox", name="Password").fill(pwd)
     
     #Input Contact Number
-    page.locator("//label[@for='contact_number']/following-sibling::input").fill('0123')
+    page.locator("//label[@for='contact_number']/following-sibling::input").fill(contactNumber)
     
     #Select Gender
     page.locator("//label[contains(text(), 'Gender')]/following-sibling::select").select_option(label='Female')
     
     #Input Email
-    page.get_by_role("textbox", name="Email").fill('test@gmail.com')
+    page.get_by_role("textbox", name="Email").fill(email)
     
     #Input Username
-    page.get_by_role("textbox", name="Username").fill('tupham')
+    page.get_by_role("textbox", name="Username").fill(username)
     
     #Upload File
     page.get_by_role("button", name="Choose File").set_input_files("tests/test.jpg")
@@ -50,17 +57,17 @@ def test_action(page : Page):
     page.locator("//div[@id='toast-container']//div[text()='Client added.']").wait_for()
     
     #Search the existing email
-    page.get_by_role("searchbox", name="Search").fill('test@gmail.com')
+    page.get_by_role("searchbox", name="Search").fill(email)
     
     # #Verify Name column
-    expect(page.locator("//table[@id='xin_table']/tbody/tr[1]/td[1]//h6")).to_have_text('test test')
-    expect(page.locator("//table[@id='xin_table']/tbody/tr[1]/td[1]//p")).to_have_text('test@gmail.com')
+    expect(page.locator("//table[@id='xin_table']/tbody/tr[1]/td[1]//h6")).to_have_text(f"{firstName} {lastName}")
+    expect(page.locator("//table[@id='xin_table']/tbody/tr[1]/td[1]//p")).to_have_text(email)
     
     #Verify Username column
-    expect(page.locator("//table[@id='xin_table']/tbody/tr[1]/td[2]")).to_contain_text('tupham')
+    expect(page.locator("//table[@id='xin_table']/tbody/tr[1]/td[2]")).to_contain_text(username)
     
     #Verify Contact Number column
-    expect(page.locator("//table[@id='xin_table']/tbody/tr[1]/td[3]")).to_have_text('0123')
+    expect(page.locator("//table[@id='xin_table']/tbody/tr[1]/td[3]")).to_have_text(contactNumber)
     
     #Verify Gender column
     expect(page.locator("//table[@id='xin_table']/tbody/tr[1]/td[4]")).to_have_text('Female')
@@ -77,7 +84,7 @@ def test_action(page : Page):
     confirm_btn = page.locator("//form[@id='delete_record']//button[@type='submit']")
     
     expect(modal).to_be_visible()
-    confirm_btn.wait_for()
+    expect(confirm_btn).to_be_visible()
     confirm_btn.click()
     expect(modal).to_be_hidden()
     
