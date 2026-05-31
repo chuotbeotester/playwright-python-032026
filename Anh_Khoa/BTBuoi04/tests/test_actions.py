@@ -42,5 +42,4 @@ def test_action(page: Page):
 
     page.get_by_role("button", name="Save").click()
 
-    time.sleep(5)
     
