@@ -83,20 +83,20 @@ def test_action(page : Page):
     page.get_by_role("searchbox", name="Search").fill(email)
     
     # #Verify Name column
-    expect(page.locator("//table[@id='xin_table']/tbody/tr[1]/td[1]//h6")).to_have_text(f"{firstName} {lastName}")
-    expect(page.locator("//table[@id='xin_table']/tbody/tr[1]/td[1]//p")).to_have_text(email)
+    expect(page.locator(name_column)).to_have_text(f"{firstName} {lastName}")
+    expect(page.locator(email_column)).to_have_text(email)
     
     #Verify Username column
-    expect(page.locator("//table[@id='xin_table']/tbody/tr[1]/td[2]")).to_contain_text(username)
+    expect(page.locator(username_column)).to_contain_text(username)
     
     #Verify Contact Number column
-    expect(page.locator("//table[@id='xin_table']/tbody/tr[1]/td[3]")).to_have_text(contactNumber)
+    expect(page.locator(contact_number_column)).to_have_text(contactNumber)
     
     #Verify Gender column
-    expect(page.locator("//table[@id='xin_table']/tbody/tr[1]/td[4]")).to_have_text(gender)
+    expect(page.locator(gender_column)).to_have_text(gender)
     
     #Verify Status column
-    expect(page.locator("//table[@id='xin_table']/tbody/tr[1]/td[6]")).to_have_text(status)
+    expect(page.locator(status_column)).to_have_text(status)
     
     #Delete user
     confirm_btn = page.get_by_role("button", name="Confirm")
