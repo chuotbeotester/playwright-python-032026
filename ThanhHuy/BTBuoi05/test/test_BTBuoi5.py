@@ -2,59 +2,47 @@ from playwright.sync_api import Page, expect
 import time
 
 # data test
-first_name = "ThanhHuy"
+first_name = "ThHuy"
 last_name = "Nguyen"
-password = "11112222"
-contact_number = "01233221"
-email = "thanhhuy@gmail.com"
-username = "thanhhuy1998"
-gender = "Male"
+password = "111122"
+contact_number = "01233241"
+email = "thanhhuy123@gmail.com"
+username = "thhuy1998"
 file_path = "ThanhHuy/BTBuoi05/data/image_uploaded.png"
 
 # locators
 login_url = "https://hrm.anhtester.com/erp/login"
-login_username_locator = "//input[@id='iusername']"
-login_password_locator = "//input[@id='ipassword']"
-login_button_locator = '//button[contains(@class,"btn-primary")]'
-manage_clients_menu_locator = '//span[normalize-space()="Manage Clients"]'
-add_new_button_locator = '//a[normalize-space()="Add New"]'
-first_name_locator = "//input[@placeholder='First Name']"
-last_name_locator = "//input[@placeholder='Last Name']"
-password_locator = "//input[@placeholder='Password']"
-contact_number_locator = "//input[@placeholder='Contact Number']"
-email_locator = "//input[@placeholder='Email']"
-username_locator = "//input[@placeholder='Username']"
-gender_locator = "//select[@name='gender']"
-file_upload_locator = "//input[@name='file']"
-save_button_locator = "//span[normalize-space()='Save']"
-search_input_locator = "//input[@type='search']"
+
 
 def test_assertion_bai5(page:Page):
-    # Login
+    # Access the login page
     page.goto(login_url)
-    page.fill(login_username_locator, "admin_example")
-    page.fill(login_password_locator, "123456")
-    page.click(login_button_locator)
 
-    # Navigate to Manage Clients
-    page.click(manage_clients_menu_locator)
+    #Input username and password, then click on the login button
+    page.get_by_role("textbox", name="Your Username").fill("admin_example")
+    page.get_by_role("textbox", name="Enter Password").fill("123456")
+    login_button = page.locator('//button[contains(@class,"btn-primary")]')
+    login_button.click()
+
+    # Click to Manage Clients
+    page.get_by_role("link", name="Manage Clients").click()
 
     # Click on Add New button
-    page.click(add_new_button_locator)
+    page.get_by_role("link", name="Add New").click()
 
     # Fill in the form
-    page.fill(first_name_locator, first_name)
-    page.fill(last_name_locator, last_name)
-    page.fill(password_locator, password)
-    page.fill(contact_number_locator, contact_number)
-    page.fill(email_locator, email)
-    page.fill(username_locator, username)
-    page.select_option(gender_locator, gender)
-    page.set_input_files(file_upload_locator, file_path)    
-    page.click(save_button_locator)
+    page.get_by_role("textbox", name="First Name").fill(first_name)
+    page.get_by_role("textbox", name="Last Name").fill(last_name)
+    page.get_by_role("textbox", name="Password").fill(password)
+    page.locator("//input[@placeholder='Contact Number']").fill(contact_number)
+    page.locator("//select[@name='gender']").select_option(label="Male")
+    page.get_by_role("textbox", name="Email").fill(email)
+    page.get_by_role("textbox", name="Username").fill(username)
+    page.locator("//input[@name='file']").set_input_files(file_path)
+    page.get_by_role("button", name="Save").click()
 
     # Search the client added by email
-    page.fill(search_input_locator, email)
+    page.get_by_role("searchbox", name="Search").fill(email)
 
     # Verify the client information in the table
 
@@ -67,6 +55,6 @@ def test_assertion_bai5(page:Page):
     #Contact Number
     expect(page.locator("//tbody/tr/td[3]")).to_contain_text(contact_number)
     #Gender
-    expect(page.locator("//tbody/tr/td[4]")).to_contain_text(gender)
+    expect(page.locator("//tbody/tr/td[4]")).to_contain_text("Male")
     #Status
     expect(page.locator("//tbody/tr/td[6]")).to_contain_text("Active")
