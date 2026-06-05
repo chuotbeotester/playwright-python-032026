@@ -1,6 +1,16 @@
 from playwright.sync_api import Page, expect
 
 def test_action(page: Page):
+    
+    firstName = 'Ba'
+    lastName = 'Ngo Thi'
+    password = '1234567'
+    contactNumber = '090807060504'
+    email = 'a1@gmail.com'
+    userName = 'Ba0521260'
+    gender = 'Female'
+    
+    
     #Login page
     page.goto("https://hrm.anhtester.com/")
     page.get_by_role("textbox", name="Your Username").fill("admin_example")
@@ -14,25 +24,25 @@ def test_action(page: Page):
     page.get_by_role("link", name="Add New").click()
     
     # Fill first Name 
-    page.get_by_role("textbox", name="First Name").fill("Ba")
+    page.get_by_role("textbox", name="First Name").fill(firstName)
     
     # Fill last name field
-    page.get_by_role("textbox", name="Last Name").fill("Ngo Thi")
+    page.get_by_role("textbox", name="Last Name").fill(lastName)
     
     # Fill password
-    page.get_by_role("textbox", name="Password").fill("1234567")
+    page.get_by_role("textbox", name="Password").fill(password)
     
     #Fill Contact Number
-    page.locator("//input[@name='contact_number']").fill("090807060504")
+    page.locator("//input[@name='contact_number']").fill(contactNumber)
     
     # Select Gender
-    page.locator("//select[@name='gender']").select_option("Female")
+    page.locator("//select[@name='gender']").select_option(gender)
     
     #Fill Email
-    page.get_by_role("textbox", name="Email").fill("a1@gmail.com")
+    page.get_by_role("textbox", name="Email").fill(email)
     
     #Fill Username
-    page.get_by_role("textbox", name="Username").fill("Ba0521260")
+    page.get_by_role("textbox", name="Username").fill(userName)
     
     #Choose File
     page.locator("//input[@type='file']").set_input_files("Ngo_Thi_Ba/BTBuoi05/tests/download.jpg")
@@ -46,18 +56,18 @@ def test_action(page: Page):
     page.get_by_role("searchbox", name="Search").fill("a1@gmail.com")  # type: ignore
    
    #Check Name, Email 
-    expect(page.locator("//h6[contains(text(),'Ba Ngo Thi')]")).to_contain_text("Ba Ngo Thi")
+    expect(page.locator('//*[@id="xin_table"]/tbody/tr[1]/td[1]')).to_contain_text(firstName +" "+lastName)
    
-    expect(page.locator("//p[contains(text(),'a1@gmail.com')]")).to_contain_text("a1@gmail.com") # type: ignore
+    expect(page.locator("//tbody/tr/td[1]")).to_contain_text(email) # type: ignore
    
    #Check Username
-    expect(page.locator("//td[normalize-space()='Ba0521260']")).to_contain_text("Ba0521260") # type: ignore
+    expect(page.locator("//tbody/tr/td[2]")).to_contain_text(userName) # type: ignore
    
    #Check Contact Number
-    expect(page.locator("//*[@id='xin_table']/tbody/tr[1]/td[3]")).to_have_text("090807060504") # type: ignore
+    expect(page.locator("//*[@id='xin_table']/tbody/tr[1]/td[3]")).to_have_text(contactNumber) # type: ignore
    
    #Check Gender
-    expect(page.locator("//*[@id='xin_table']/tbody/tr[1]/td[4]")).to_have_text("Female") # type: ignore
+    expect(page.locator("//*[@id='xin_table']/tbody/tr[1]/td[4]")).to_have_text(gender) # type: ignore
    
    #Check Status
-    expect(page.locator("//table[@id='xin_table']/tbody/tr[1]/td[6]")).to_have_text("Active") # type: ignore
+    expect(page.locator("//*[@id='xin_table']/tbody/tr[1]/td[6]")).to_have_text("Active") # type: ignore
