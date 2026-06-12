@@ -1,9 +1,6 @@
 import pytest
 from playwright.sync_api import Page
-from page.login_page import LoginPage
-from page.core_hr.department_page import DepartmentPage
-from page.core_hr.designation_page import DesignationPage
-from page.core_hr.policies_page import PoliciesPage
+from page import LoginPage, DepartmentPage, DesignationPage, PoliciesPage
 from utils.path_helper import PathFile
 from utils.text_data import TextData
 
