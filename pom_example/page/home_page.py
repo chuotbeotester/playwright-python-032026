@@ -9,6 +9,12 @@ class HomePage(BasePage):
         self.label_profile_name = self.page.locator('//a[@href="https://hrm.anhtester.com/erp/my-profile"]//p')
 
     def choose_left_menu(self, main_menu: str, sub_menu: str = None):
+        """Điều hướng đến một mục của ứng dụng bằng cách click vào menu chính và menu phụ tùy chọn.
+
+        Args:
+            main_menu (str): Tên của menu chính cần click.
+            sub_menu (str, optional): Tên của menu phụ cần click (nếu có). Mặc định là None.
+        """
         locator_main_menu = self.page.get_by_role("link", name=f" {main_menu}", exact=True)
         self.click(locator_main_menu)
         if sub_menu is not None:
