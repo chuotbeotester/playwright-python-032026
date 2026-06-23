@@ -1,15 +1,5 @@
 {
     "URL": "https://hrm.anhtester.com/erp/",
     "USERNAME": "admin_example",
-    "PASSWORD": "123456",
-
-    "CLIENT_FISRTNAME": "Linh",
-    "CLIENT_LASTNAME": "Pham",
-    "CLIENT_PASSWORD": "1234565",
-    "CLIENT_CONTACTNUMBER": "01293721321",
-    "CLIENT_GENDER": "Male",
-    "CLIENT_EMAIL": "linh+1@gmail.com",
-    "CLIENT_USERNAME": "linh001",
-    "CLIENT_PATH": "/"
-
+    "PASSWORD": "123456"
 }

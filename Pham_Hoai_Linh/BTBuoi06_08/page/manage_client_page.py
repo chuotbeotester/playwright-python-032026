@@ -15,8 +15,8 @@ class ManageClientPage(BasePage):
         self.textbox_userName = self.page.get_by_role("textbox", name="Username")
         self.uploadFile = self.page.locator('//input[@class="custom-file-input"]')
         self.btn_save = self.page.get_by_role("button", name="Save")
+        
         self.textbox_search = self.page.get_by_role("searchbox", name="Search")
-
         self.table_name = self.page.locator('//h6[@class="m-b-0"]')
         self.table_email = self.page.locator('//p[@class="m-b-0"]')
         self.table_username = self.page.locator('//td[@class="sorting_1"]/following-sibling::td[1]')
@@ -25,7 +25,6 @@ class ManageClientPage(BasePage):
         
     def go_to_manage_client_page(self):
        self.navigate("https://hrm.anhtester.com/erp/clients-list")
-
 
     def add_new_client(self, firstName: str, lastName: str, password: str, contactNumber: int, gender, email: str, userName: str, uploadFile):
         self.set_text(self.textbox_firstName, firstName)
@@ -39,6 +38,7 @@ class ManageClientPage(BasePage):
         self.click(self.btn_save)
 
     def verify_added_client(self, firstName: str, lastName: str, contactNumber: int, gender, email: str, userName: str):
+        self.set_text(self.textbox_search, email)
         self.verify_element_text(self.table_name, firstName+" "+lastName)
         self.verify_element_text(self.table_email, email)
         self.verify_element_text(self.table_username, userName)
