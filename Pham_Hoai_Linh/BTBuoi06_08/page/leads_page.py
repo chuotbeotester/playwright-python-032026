@@ -1,7 +1,7 @@
 from playwright.sync_api import Page
 from page.base_page import BasePage
 
-class leadsPage(BasePage):
+class LeadsPage(BasePage):
     def __init__(self, page):
         super().__init__(page)
         self.btn_addNewLead = self.page.get_by_role("link", name= "Add New")
