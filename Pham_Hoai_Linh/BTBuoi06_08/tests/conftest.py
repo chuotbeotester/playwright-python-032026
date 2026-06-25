@@ -49,3 +49,13 @@ def logged_in_lead(page, login, get_credential):
 def get_client_infor():
     clientInfor = PathFile.read_json_data("input_data/new_client.json")
     yield clientInfor
+
+@pytest.fixture
+def get_avatar_path():
+    avatar_path = PathFile.ROOT / "resources" / "upload_files" / "avatar.png"
+    yield avatar_path
+
+@pytest.fixture
+def get_lead_infor():
+    leadInfor = PathFile.read_json_data("input_data/new_lead.json")
+    yield leadInfor

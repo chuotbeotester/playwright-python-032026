@@ -12,7 +12,7 @@ class ManageClientPage(BasePage):
         self.textbox_contactNumber = self.page.locator('//input[@name="contact_number"]')
         self.dropdown_gender = self.page.locator('//select[@class="form-control select2-hidden-accessible"]')
         self.textbox_email = self.page.get_by_role("textbox", name="Email")
-        self.textbox_userName = self.page.get_by_role("textbox", name="UserName")
+        self.textbox_userName = self.page.get_by_role("textbox", name="Username")
         self.uploadFile = self.page.locator('//input[@class="custom-file-input"]')
         self.btn_save = self.page.get_by_role("button", name="Save")
         
