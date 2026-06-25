@@ -1,25 +1,19 @@
-from playwright.sync_api import Page, expect
+from playwright.sync_api import expect
 from page.base_page import BasePage
 from page.home_page import HomePage
 
 class DepartmentPage(BasePage):
-    def __init__(self, page: Page):
+    def __init__(self, page):
         super().__init__(page)
-        self.page_name = "Department"
-        self.home_page = HomePage(page)
         self.textbox_name = self.page.get_by_role("textbox", name="Name", exact=True)
         self.button_save = self.page.get_by_role("button", name="Save", exact=True)
         self.textbox_search = self.page.get_by_role("searchbox", name="Search", exact=True)
-        
+    
 
     def go_to_department_page(self):
-        """Điều hướng tới trang Department."""
-        department_header = self.page.locator(f'//div[@class="page-header"]//li[normalize-space()="{self.page_name}"]')
-        tab_department = self.page.locator(f'//li[contains(.,"{self.page_name}")][contains(@class,"nav-item")]')
-        self.home_page.choose_left_menu("Core HR", self.page_name)
-        self.verify_element_visible(department_header)
-        expect(tab_department).to_contain_class("active")
-
+       self.navigate("https://hrm.anhtester.com/erp/departments-list")
+       self.verify_element_visible(self.textbox_name)
+        
     def create_department(self, department_name: str):
         """Tạo một Department mới với tên được chỉ định.
 

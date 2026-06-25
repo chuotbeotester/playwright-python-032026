@@ -5,18 +5,18 @@ from page.home_page import HomePage
 class LoginPage(BasePage):
     def __init__(self, page: Page):
         super().__init__(page)
-        self.home_page = HomePage(self.page)        
         self.textbox_username = self.page.get_by_role('textbox', name='Your Username', exact=True)
         self.textbox_password = self.page.get_by_role('textbox', name='Enter Password', exact=True)
         self.button_login = self.page.get_by_role('button', name='Login', exact=False)
 
-    def login(self, username: str, password: str):
+    def login(self, url: str, username: str, password: str):
         """Thực hiện hành động đăng nhập với tên đăng nhập và mật khẩu được cung cấp.
 
         Args:
             username (str): Tên đăng nhập để đăng nhập.
             password (str): Mật khẩu để đăng nhập.
         """
+        self.navigate(url)
         self.set_text(self.textbox_username, username)
         self.set_text(self.textbox_password, password)
         self.click(self.button_login)
