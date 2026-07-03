@@ -1,8 +1,6 @@
-from playwright.sync_api import expect
 from page.base_page import BasePage
 from utils.path_helper import PathFile
 from utils.random_data_helper import FakeData
-import time
 
 class LeadsPage(BasePage):
     lead_data = PathFile.read_json_data("input_data/client_data.json")
