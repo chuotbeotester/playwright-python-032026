@@ -6,7 +6,7 @@ class BasePage:
 
     def navigate(self, url: str):
         """
-        Điều hướng trình duyệt đến URL chỉ định.
+        Điều hướng trình duyệt đến URL chỉ định.  
 
         Args:
             url (str): Địa chỉ URL cần điều hướng đến.
@@ -146,17 +146,3 @@ class BasePage:
                 f"Verify text thất bại | Element: {element_locator} "
                 f"| Expected: '{expected_text}' | Mode: {mode}"
             ) from e    
-    
-    def _click_open_new_tab(self, locator : Locator, timeout : int = 10000):
-        with self.page.context.expect_page(timeout = timeout) as new_page:
-            locator.click()
-        
-        new_page_info = new_page.value
-        new_page_info.wait_for_load_state("load")
-        return new_page_info
-    
-    def _bring_to_front(self):
-        self.page.bring_to_front()
-    
-    def _page_close(self):
-        self.page.close()
