@@ -16,10 +16,10 @@ def test_actions(page: Page):
     page.get_by_role('textbox', name='Last Name').fill('Nguyen')
     page.get_by_role('textbox', name='Password').fill('123456')
     page.locator('//input[@name="contact_number"]').fill('0966123456')
-    page.locator('//select[@name="gender"]').select_option('Female')
+    page.locator('//select[@name="gender"]').select_option(label='Female')
     page.get_by_role('textbox', name='Email').fill('hoanp1@gmail.com')
     page.get_by_role('textbox', name='Username').fill('HoaNP1')
-    page.locator('//input[@type="file"]').set_input_files('PhuongHoa/BTBuoi04/image.jpg')
-    page.locator('//button[normalize-space() = "Save"]').click()
+    page.get_by_role("button", name="Choose File").set_input_files('PhuongHoa/BTBuoi04/image.jpg')
+    page.get_by_role("button", name="Save").click()
 
     print("Create an user successfully")
