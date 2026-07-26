@@ -2,6 +2,7 @@ import pytest
 from page.login_page import LoginPage
 from page.leads_page import Leads
 from utils.path_hepler import PathFile
+from factories.lead_factory import LeadFactory
 
 
 
@@ -24,3 +25,7 @@ def logged_in_lead(page, login, get_credential):
     )
     leadsPage = Leads(page)
     yield leadsPage
+    
+@pytest.fixture
+def lead():
+    return LeadFactory.create_leadfactory()
