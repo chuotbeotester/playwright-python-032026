@@ -27,7 +27,7 @@ jobs:
           playwright install --with-deps
       - name: Run tests and generate HTML report
         run: |
-          pytest tests/ --html=report.html --self-contained-html
+          pytest tests/Pham_Hoai_Linh/BTBuoi05/tests/test_action_buoi5.py --html=report.html --self-contained-html
 
       - name: Upload test report html
         uses: actions/upload-artifact@v4
