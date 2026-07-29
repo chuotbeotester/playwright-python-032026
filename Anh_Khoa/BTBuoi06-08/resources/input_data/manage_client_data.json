@@ -1,0 +1,11 @@
+{
+    "first_name_prefix": "Khoa",
+    "last_name": "Nguyen",
+    "password": "Test@1234",
+    "contact_number": "0901234567",
+    "gender": "1",
+    "email_prefix": "khoanguyen",
+    "email_domain": "@test.com",
+    "username_prefix": "EthenNguyen",
+    "upload_file": "upload_files/ok.jpg"
+}
