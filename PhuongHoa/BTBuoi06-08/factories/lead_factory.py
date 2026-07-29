@@ -2,6 +2,7 @@ from utils.path_hepler import PathFile
 from utils.text_data import TextData
 from utils.faker_helper import FakerHelper
 from models.lead import Lead
+import random
 
 class LeadFactory:
 
@@ -11,7 +12,7 @@ class LeadFactory:
         return Lead(
             firstname = data["FIRST_NAME"],
             lastname = TextData.create_text_data(data["LAST_NAME"]),
-            gender = data["GENDER"],
+            gender = random.choice(['Male', 'Female']),
             contactnumber = FakerHelper.contactnumber(),
             email = FakerHelper.email(),
             image_path = PathFile.get_string_file_path("upload_files/image.jpg")
